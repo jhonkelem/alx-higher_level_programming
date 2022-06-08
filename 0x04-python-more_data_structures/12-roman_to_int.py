@@ -3,7 +3,8 @@ def roman_to_int(roman_string):
     my_list = []
     result = 0
     if roman_string and type(roman_string) == str:
-        dictionary = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        dictionary = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100,
+                      'D': 500, 'M': 1000}
         for roman_num in roman_string:
             for key in dictionary:
                 if roman_num == key:
@@ -14,6 +15,6 @@ def roman_to_int(roman_string):
             else:
                 my_list[i - 1] = my_list[i - 1] * -1
                 result += my_list[i]
-    return result
-    else:   
+        return result
+    else:
         return 0
