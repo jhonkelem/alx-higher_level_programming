@@ -1,8 +1,9 @@
 #!/usr/bin/python3
+"""
+My first square
+"""
 
 
 class Square:
-    '''Class Square
-    '''
-
-    pass
+    """define blank class"""
+    {}
