@@ -159,3 +159,62 @@ class Base:
                 # returns the (simple) list of instances
         except:
             return '[]'
+        
+      @staticmethod
+      def draw(list_rectangles, list_squares):
+        """Draws the polygons in each list using Turtle graphics.
+        Args:
+            list_rectangles (list): A list of Rectangle objects.
+            list_squares (list): A list of Square objects.
+        """
+        poly_list = []
+        funcs = {
+            'hex_to_rgb': lambda x: (x >> 16, (x >> 8) % 0xff, x % 0xff)
+        }
+        pen = Pen()
+        screen = pen.getscreen()
+        poly_list.extend(list_rectangles)
+        poly_list.extend(list_squares)
+        wind_width = max(
+            [max(map(lambda x: x.width + x.x, poly_list)) + 4, 460.8])
+        wind_height = max(
+            [max(map(lambda x: x.height + x.y, poly_list)) + 4, 259.2])
+        screen.setup(width=wind_width, height=wind_height)
+        screen.setworldcoordinates(0, wind_height, wind_width, 0)
+        pen.speed('slowest')
+        pen.degrees()
+        pen.pensize(2)
+        pen.hideturtle()
+        for i in range(len(poly_list)):
+            rect = poly_list[i]
+            pen.up()
+            pen.forward(rect.x)
+            pen.right(90)
+            pen.backward(rect.y)
+            pen.showturtle()
+            pen.down()
+            pen.begin_poly()
+            pen.fillcolor(funcs['hex_to_rgb'](randint(0, 0xffffff)))
+            pen.pencolor(funcs['hex_to_rgb'](randint(0, 0xffffff)))
+            pen.begin_fill()
+            pen.backward(rect.height)
+            pen.left(90)
+            pen.forward(rect.width)
+            pen.left(90)
+            pen.backward(rect.height)
+            pen.left(90)
+            pen.forward(rect.width)
+            pen.end_fill()
+            pen.end_poly()
+            pen.up()
+            # move to start pos
+            pen.hideturtle()
+            pen.right(90)
+            pen.backward(rect.y)
+            pen.left(90)
+            pen.forward(rect.x)
+            pen.right(180)
+        while True:
+            c = input('Enter "q" to quit: ')
+            if c == 'q':
+                break
