@@ -11,6 +11,6 @@ newDict[dict[occurences]] = [occurences];
 
 newDict[dict[occurences]].push(occurences);
 
-			      }
+}
 });
 console.log(newDict);
