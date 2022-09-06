@@ -5,6 +5,7 @@
  */
 
 class Rectangle {
+
 	/**
 	 * Creates a new Rectangle with the given dimensions.
 	 * @param {Number} w the value of the width.
